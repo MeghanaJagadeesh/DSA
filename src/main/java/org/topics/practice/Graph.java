@@ -64,39 +64,6 @@ public class Graph {
         }
     }
 
-//    public static void levelOrder(Node node) {
-//        if (node == null) return;
-//        Queue<Node> queue = new LinkedList<>();
-//        queue.offer(node);
-//        while (!queue.isEmpty()) {
-//            Node current = queue.poll();
-//            System.out.print(current.root+" ");
-//            if (current.left != null) {
-//                queue.offer(current.left);
-//            }
-//            if (current.right != null) {
-//                queue.offer(current.right);
-//            }
-//        }
-//    }
-
-//    public static void findLevels(Node node) {
-//        if (node == null) return;
-//        Queue<Node> queue = new LinkedList<>();
-//        queue.offer(node);
-//        int level = 0;
-//        while (!queue.isEmpty()) {
-//            int levelSize = queue.size();
-//            level++;
-//            for (int i = 0; i < levelSize; i++) {
-//                Node current = queue.poll();
-//                if (current.left != null) queue.offer(current.left);
-//                if (current.right != null) queue.offer(current.right);
-//            }
-//        }
-//        System.out.println(level);
-//    }
-
     private static void getNeighboursOf(int src, ArrayList<Edges> graph[]) {
         for (int i = 0; i < graph.length; i++) {
             ArrayList<Edges> edges = graph[i];

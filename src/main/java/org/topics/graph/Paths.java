@@ -1,10 +1,12 @@
 package org.topics.graph;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class Paths {
-    
+
     //find all the possible path to reach the destination
     public void findpath(ArrayList<Edges> graph[], boolean[] visited, int current, String path, int target) {
         if (current == target) {
@@ -22,21 +24,32 @@ public class Paths {
             }
         }
     }
-    public void shortestPath(ArrayList<Edges> graph[], boolean[] visited, int current, int target, String path, List<String> result){
-        if(current==target){
+
+    public void shortestPath(ArrayList<Edges> graph[], boolean[] visited, int current, int target, String path, List<String> result) {
+        if (current == target) {
             System.out.println(path);
             result.add(path);
             return;
         }
 
-        for(int i=0; i<graph[current].size();i++){
-            Edges edges=graph[current].get(i);
-            if(!visited[edges.destination]){
-                visited[current]=true;
-                shortestPath(graph, visited,edges.destination,target,path+edges.destination,result);
-                visited[current]=false;
+        for (int i = 0; i < graph[current].size(); i++) {
+            Edges edges = graph[current].get(i);
+            if (!visited[edges.destination]) {
+                visited[current] = true;
+                shortestPath(graph, visited, edges.destination, target, path + edges.destination, result);
+                visited[current] = false;
             }
         }
+    }
+
+    public void getNeighbour(int src, ArrayList<Edges> graph[]) {
+        for (Edges edge : graph[src]) {
+            if (edge.src != src) {
+                continue;
+            }
+            System.out.print(edge.destination + " ");
+        }
+        System.out.println();
     }
 
 }

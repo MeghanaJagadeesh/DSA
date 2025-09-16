@@ -36,7 +36,6 @@ public class SwapNodeInPairs {
 //          updating dummy or moving forward
             prev.next=second;
             prev=first;
-
         }
         return dummy.next;
 

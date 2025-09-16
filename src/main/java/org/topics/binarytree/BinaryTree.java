@@ -22,16 +22,53 @@ public class BinaryTree {
 
         System.out.println();
         System.out.println("levelorder traversal : ");
-        levelOrderTraversal(node);
+        levelOrderTraversal1(node);
+
+        checkNoLevels(node);
     }
 
     //levelorder traversal
+    private static void levelOrderTraversal1(Node node) {
+        if (node == null) return;
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(node);
+        while (!queue.isEmpty()) {
+            Node current = queue.poll();
+            System.out.println(current.root + ", ");
+            if (current.left != null) {
+                levelOrderTraversal1(current.left);
+            }
+            if (current.right != null) {
+                levelOrderTraversal1(current.right);
+            }
+        }
+    }
 
+    private static void checkNoLevels(Node node) {
+        if (node == null) return;
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(node);
+        int level = 0;
+        while (!queue.isEmpty()) {
+            level++;
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                Node current = queue.poll();
+                System.out.print(current.root + " ");
+                if (current.left != null) queue.offer(current.left);
+                if (current.right != null) queue.offer(current.right);
+            }
+            System.out.println();
+        }
+        System.out.println("level: " + level);
+    }
+
+    // find number of level
     private static void levelOrderTraversal(Node node) {
         if (node == null) return;
         Queue<Node> queue = new LinkedList<>();
         queue.offer(node);
-        int level=0;
+        int level = 0;
         while (!queue.isEmpty()) {
             int levelSize = queue.size();
             level++;
@@ -45,7 +82,7 @@ public class BinaryTree {
 
             System.out.println();
         }
-        System.out.println("level size : "+level);
+        System.out.println("level size : " + level);
     }
 
     //post order traversal

@@ -32,25 +32,26 @@ public class BFSandDFS {
         System.out.println();
 
 
-        Paths paths=new Paths();
-        int target=5;
-        int src=0;
+        Paths paths = new Paths();
+        paths.getNeighbour(1, graph);
+        int target = 5;
+        int src = 0;
         System.out.println("available paths are : ");
-        paths.findpath(graph,new boolean[v],src,src+"",target);
+        paths.findpath(graph, new boolean[v], src, src + "", target);
 
 
         System.out.println("just");
-        List<String> result=new ArrayList<>();
-        paths.shortestPath(graph,new boolean[v], 2,target,2+"", result );
-        int length=Integer.MAX_VALUE;
-        String shortest= "";
-        for (String res:result){
-            if(res.length()<length) {
+        List<String> result = new ArrayList<>();
+        paths.shortestPath(graph, new boolean[v], 2, target, 2 + "", result);
+        int length = Integer.MAX_VALUE;
+        String shortest = "";
+        for (String res : result) {
+            if (res.length() < length) {
                 length = res.length();
                 shortest = res;
             }
         }
-        System.out.println("shortest path : "+shortest);
+        System.out.println("shortest path : " + shortest);
     }
 
     public static void createGraph(ArrayList<Edges> graph[]) {
